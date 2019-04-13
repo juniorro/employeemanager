@@ -26,8 +26,7 @@ public class Employee implements Serializable {
 	public Employee() {
 	}
 
-	public Employee(Long id, String name, String email, String jobTitle, String phone) {
-		this.id = id;
+	public Employee(String name, String email, String jobTitle, String phone) {
 		this.name = name;
 		this.email = email;
 		this.jobTitle = jobTitle;
@@ -73,11 +72,4 @@ public class Employee implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", email=" + email + ", jobTitle=" + jobTitle + ", phone="
-				+ phone + "]";
-	}
-
 }

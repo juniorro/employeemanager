@@ -5,15 +5,17 @@ import java.util.List;
 import com.example.demo.model.Employee;
 
 public interface EmployeeService {
-	
-	public void AddEmployee(Employee employee);
-	
-	public List<Employee>findAllEmployees();
-	
-	public Employee findAnEmployeeById(Long id);
-	
-	public void updateEmployee(Employee employee);
-	
-	public void deleteEmployee(Long id);
+
+	void AddEmployee(Employee employee);
+
+	List<Employee>findAllEmployees();
+
+	Employee findEmployeeById(Long id);
+
+	List<Employee>findEmployeesByName(String name);
+
+	void updateEmployee(Employee employee);
+
+	void deleteEmployee(Long id);
 
 }
