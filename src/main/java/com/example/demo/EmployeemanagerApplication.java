@@ -12,6 +12,16 @@ import java.util.Arrays;
 @SpringBootApplication
 public class EmployeemanagerApplication {
 
+	@Bean
+	pblic WebMvcConfigurer corsConfig(){
+		return new WebMvcConfigurerAdapter(){
+			@Override
+			public void addCorsMappings(CorsRegistry registry){
+				registry.addMapping("/*").allowedOrigins("*");
+			}
+		};
+	}
+
 	/*@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();

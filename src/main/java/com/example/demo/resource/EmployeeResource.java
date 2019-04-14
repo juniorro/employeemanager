@@ -14,7 +14,7 @@ import com.example.demo.service.EmployeeService;
 
 @RestController
 @RequestMapping("/employee")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class EmployeeResource {
 
 	@Autowired
