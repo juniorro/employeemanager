@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.model.Employee;
 import com.example.demo.service.EmployeeService;
 
-@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/employee")
+@CrossOrigin(origins = "*")
 public class EmployeeResource {
 
 	@Autowired
@@ -25,7 +25,7 @@ public class EmployeeResource {
 	}
 
 
-	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/all")
 	public ResponseEntity<List<Employee>> getAllEmployees() {
 		List<Employee> employeeList = employeeService.findAllEmployees();
 		return new ResponseEntity<>(employeeList, HttpStatus.OK);
