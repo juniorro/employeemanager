@@ -22,15 +22,20 @@ public class Employee implements Serializable {
 	private String email;
 	private String jobTitle;
 	private String phone;
+	private String imageUrl;
+	@Column(nullable = false, updatable = false)
+	private String userCode;
 
 	public Employee() {
 	}
 
-	public Employee(String name, String email, String jobTitle, String phone) {
+	public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String userCode) {
 		this.name = name;
 		this.email = email;
 		this.jobTitle = jobTitle;
 		this.phone = phone;
+		this.imageUrl = imageUrl;
+		this.userCode = userCode;
 	}
 
 	public Long getId() {
@@ -71,5 +76,33 @@ public class Employee implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public String getUserCode() {
+		return userCode;
+	}
+
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", email='" + email + '\'' +
+				", jobTitle='" + jobTitle + '\'' +
+				", phone='" + phone + '\'' +
+				", imageUrl='" + imageUrl + '\'' +
+				'}';
 	}
 }

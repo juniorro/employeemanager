@@ -2,22 +2,30 @@ package com.example.demo.resource;
 
 import java.util.List;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.Employee;
 import com.example.demo.service.EmployeeService;
 
+@CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/api/employee")
+@RequestMapping("/employee")
 public class EmployeeResource {
 
 	@Autowired
 	private EmployeeService employeeService;
 
-	@GetMapping("/all")
+	public EmployeeResource(EmployeeService employeeService) {
+		this.employeeService = employeeService;
+	}
+
+
+	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Employee>> getAllEmployees() {
 		List<Employee> employeeList = employeeService.findAllEmployees();
 		return new ResponseEntity<>(employeeList, HttpStatus.OK);
@@ -37,6 +45,7 @@ public class EmployeeResource {
 	
 	@PostMapping("/add")
 	public ResponseEntity<Employee> addNewEmployee(@RequestBody Employee employee) {
+		employee.setUserCode(RandomStringUtils.randomAlphabetic(5));
 		employeeService.AddEmployee(employee);
 		return new ResponseEntity<>(employee, HttpStatus.CREATED);
 	}
@@ -50,7 +59,7 @@ public class EmployeeResource {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteAnEmployee(@PathVariable("id") Long id) {
 		employeeService.deleteEmployee(id);
-		return new ResponseEntity<>("Employee Deleted", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	} 
 
 
