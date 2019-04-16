@@ -15,9 +15,9 @@ import com.example.demo.service.EmployeeService;
 @RequestMapping("/employee")
 public class EmployeeResource {
 
-	@Autowired
 	private EmployeeService employeeService;
 
+	@Autowired
 	public EmployeeResource(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
@@ -43,7 +43,7 @@ public class EmployeeResource {
 	
 	@PostMapping("/add")
 	public ResponseEntity<Employee> addNewEmployee(@RequestBody Employee employee) {
-		employee.setUserCode(RandomStringUtils.randomAlphabetic(5));
+		employee.setEmployeeCode(RandomStringUtils.randomAlphabetic(5));
 		employeeService.AddEmployee(employee);
 		return new ResponseEntity<>(employee, HttpStatus.CREATED);
 	}

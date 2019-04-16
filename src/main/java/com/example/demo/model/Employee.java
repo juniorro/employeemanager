@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,18 +23,18 @@ public class Employee implements Serializable {
 	private String phone;
 	private String imageUrl;
 	@Column(nullable = false, updatable = false)
-	private String userCode;
+	private String employeeCode;
 
 	public Employee() {
 	}
 
-	public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String userCode) {
+	public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
 		this.name = name;
 		this.email = email;
 		this.jobTitle = jobTitle;
 		this.phone = phone;
 		this.imageUrl = imageUrl;
-		this.userCode = userCode;
+		this.employeeCode = employeeCode;
 	}
 
 	public Long getId() {
@@ -86,12 +85,12 @@ public class Employee implements Serializable {
 		this.imageUrl = imageUrl;
 	}
 
-	public String getUserCode() {
-		return userCode;
+	public String getEmployeeCode() {
+		return employeeCode;
 	}
 
-	public void setUserCode(String userCode) {
-		this.userCode = userCode;
+	public void setEmployeeCode(String employeeCode) {
+		this.employeeCode = employeeCode;
 	}
 
 	@Override
