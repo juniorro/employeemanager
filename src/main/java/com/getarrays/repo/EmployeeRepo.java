@@ -1,8 +1,8 @@
-package com.example.demo.repo;
+package com.getarrays.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.model.Employee;
+import com.getarrays.model.Employee;
 
 import java.util.List;
 

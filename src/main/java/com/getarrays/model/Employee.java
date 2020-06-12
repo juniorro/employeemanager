@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.getarrays.model;
 
 import java.io.Serializable;
 
@@ -25,8 +25,7 @@ public class Employee implements Serializable {
 	@Column(nullable = false, updatable = false)
 	private String employeeCode;
 
-	public Employee() {
-	}
+	public Employee() {}
 
 	public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
 		this.name = name;
