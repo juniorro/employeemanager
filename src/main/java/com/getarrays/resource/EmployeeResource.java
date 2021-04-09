@@ -43,7 +43,7 @@ public class EmployeeResource {
 
 	@GetMapping("/download/{filename}") //:.+
 	public ResponseEntity<Resource> downloadFile(@PathVariable("filename") String filename) throws IOException {
-		Path filePath = Paths.get(DIRECTORY).toAbsolutePath().normalize().resolve(filename);
+		Path filePath = get(DIRECTORY).toAbsolutePath().normalize().resolve(filename);
 		if (!Files.exists(filePath)) {
 			throw new FileNotFoundException(filename + " was not found on the server");
 		}
@@ -55,70 +55,3 @@ public class EmployeeResource {
 				.headers(httpHeaders).body(resource);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*private final EmployeeService employeeService;
-
-	@Autowired
-	public EmployeeResource(EmployeeService employeeService) {
-		this.employeeService = employeeService;
-	}
-
-	@GetMapping("/all")
-	public ResponseEntity<List<Employee>> getAllEmployees() {
-		List<Employee> employeeList = employeeService.findAllEmployees();
-		return new ResponseEntity<>(employeeList, OK);
-	}
-
-	@GetMapping("/find/{id}")
-	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id) {
-		Employee employee = employeeService.findEmployeeById(id);
-		return new ResponseEntity<>(employee, OK);
-	}
-	
-	@PostMapping("/add")
-	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
-		employeeService.AddEmployee(employee);
-		return new ResponseEntity<>(employee, CREATED);
-	}
-	
-	@PutMapping("/update")
-	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
-		employeeService.updateEmployee(employee);
-		return new ResponseEntity<>(employee, OK);
-	}
-	
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
-		employeeService.deleteEmployee(id);
-		return new ResponseEntity<>(OK);
-	}*/
